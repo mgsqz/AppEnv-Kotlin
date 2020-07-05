@@ -27,7 +27,7 @@ import android.widget.PopupMenu
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
-import com.elvishew.xlog.XLog
+//import com.elvishew.xlog.XLog
 import com.github.rubensousa.bottomsheetbuilder.BottomSheetBuilder
 import com.just.agentweb.AgentWebConfig
 import com.sollyu.android.appenv.R
@@ -239,7 +239,7 @@ class ActivityDetail : ActivityBase() {
     fun onEventBus(eventSample: EventSample) {
         when (eventSample.eventTYPE) {
             EventSample.TYPE.DETAIL_JSON_2_UI -> {
-                XLog.d(eventSample.value)
+//                XLog.d(eventSample.value)
                 if (eventSample.value is JSONObject) {
                     jsonObjectToUi(eventSample.value as JSONObject)
                 }
@@ -646,7 +646,7 @@ class ActivityDetail : ActivityBase() {
                             materialDialog.dismiss()
                             try {
                                 val serverResult = response.body().string()
-                                XLog.d(serverResult)
+//                                XLog.d(serverResult)
                                 val jsonObject = JSON.parseObject(serverResult)
                                 if (jsonObject.getInteger("ret") == 200) {
                                     activity.runOnUiThread { Snackbar.make(fab, "上传成功", Snackbar.LENGTH_LONG).show() }
@@ -723,7 +723,7 @@ class ActivityDetail : ActivityBase() {
                 materialDialog.dismiss()
                 try {
                     val serverResult = response.body().string()
-                    XLog.d(serverResult)
+//                    XLog.d(serverResult)
                     val jsonObject = JSON.parseObject(serverResult)
                     if (jsonObject.getInteger("ret") == 200) {
                         activity.runOnUiThread { jsonObjectToUi(jsonObject.getJSONObject("data")) }

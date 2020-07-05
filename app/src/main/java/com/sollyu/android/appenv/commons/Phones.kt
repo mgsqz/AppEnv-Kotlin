@@ -10,7 +10,7 @@ package com.sollyu.android.appenv.commons
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.annotation.JSONField
-import com.elvishew.xlog.XLog
+//import com.elvishew.xlog.XLog
 import com.sollyu.android.appenv.bean.PhoneModel
 import org.apache.commons.io.FileUtils
 import java.io.File

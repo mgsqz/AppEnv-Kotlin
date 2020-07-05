@@ -9,7 +9,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'walle'
+//apply plugin: 'walle'
 
 static def getGitVersion() { return 'git rev-parse --short HEAD'.execute().text.trim() }
 
@@ -26,31 +26,22 @@ android {
         versionCode 591
         versionName "3.3.1." + getGitVersion()
     }
-
     signingConfigs {
-        debug {
-            v1SigningEnabled true
-            v2SigningEnabled true
-
-            storeFile file( localProperties.getProperty('signing.config.debug.store.path'))
-            storePassword   localProperties.getProperty('signing.config.debug.store.pass1')
-            keyAlias        localProperties.getProperty('signing.config.debug.store.alias')
-            keyPassword     localProperties.getProperty('signing.config.debug.store.pass2')
-        }
         release {
             v1SigningEnabled true
             v2SigningEnabled true
-
-            storeFile file( localProperties.getProperty('signing.config.release.store.path'))
-            storePassword   localProperties.getProperty('signing.config.release.store.pass1')
-            keyAlias        localProperties.getProperty('signing.config.release.store.alias')
-            keyPassword     localProperties.getProperty('signing.config.release.store.pass2')
+            storeFile file("TestKey.jks")
+            storePassword "123321"
+            keyAlias "Test"
+            keyPassword "123321"
         }
+
     }
+
 
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -64,16 +55,16 @@ android {
 
 // ./gradlew clean assembleReleaseChannels
 // ./gradlew clean assembleReleaseChannels -PchannelList=official,github
-walle {
-    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
-    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
-    channelFile = new File("${project.getProjectDir()}/channel.txt")
-}
+//walle {
+//    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+//    channelFile = new File("${project.getProjectDir()}/channel.txt")
+//}
 
 dependencies {
     compileOnly fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/umeng-analytics-7.4.0.jar')
-    implementation files('libs/umeng-common-1.4.0.jar')
+//    implementation files('libs/umeng-analytics-7.4.0.jar')
+//    implementation files('libs/umeng-common-1.4.0.jar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:design:$android_support_version"
     implementation "com.android.support:appcompat-v7:$android_support_version"
@@ -82,7 +73,7 @@ dependencies {
     implementation 'org.apache.commons:commons-text:1.1'
     implementation 'commons-io:commons-io:2.6'
     implementation 'org.xutils:xutils:3.5.0'
-    implementation 'com.elvishew:xlog:1.4.0'
+//    implementation 'com.elvishew:xlog:1.4.0'
     implementation 'com.alibaba:fastjson:1.1.56.android'
     implementation 'com.squareup.okhttp:okhttp:2.7.5'
     implementation 'com.github.kingsollyu:NotProguard:1.0.0'
@@ -95,7 +86,7 @@ dependencies {
     implementation 'ru.alexbykov:nopermission:1.1.2'
     implementation 'com.just.agentweb:agentweb:4.0.2'
     implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
-    implementation "com.meituan.android.walle:library:$walle_version"
+//    implementation "com.meituan.android.walle:library:$walle_version"
 }
 
 repositories {

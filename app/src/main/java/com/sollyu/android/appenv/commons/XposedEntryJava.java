@@ -19,7 +19,7 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.elvishew.xlog.XLog;
+//import com.elvishew.xlog.XLog;
 import com.sollyu.android.appenv.BuildConfig;
 
 import org.apache.commons.io.FileUtils;

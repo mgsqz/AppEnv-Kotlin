@@ -16,7 +16,7 @@ import android.webkit.JavascriptInterface
 import android.widget.LinearLayout
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.fastjson.JSON
-import com.elvishew.xlog.XLog
+//import com.elvishew.xlog.XLog
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.AgentWebConfig
 import com.sollyu.android.appenv.R
@@ -116,7 +116,7 @@ class ActivityWeb : ActivityBase(){
                         OkHttpClient().newCall(Request.Builder().url(AppEnvConstants.URL_APPENV_DOWNLOAD_PACKAGE + "?config_id=" + configId).header("Cookie", cookie).build()).enqueue(object : Callback {
                             override fun onFailure(request: Request, e: IOException) {
                                 dialog.dismiss()
-                                XLog.e(e.toString(), e)
+//                                XLog.e(e.toString(), e)
                                 activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("下载出现错误：\n" + Log.getStackTraceString(e)).positiveText(android.R.string.ok).show() }
                             }
 

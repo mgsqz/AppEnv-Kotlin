@@ -15,7 +15,7 @@ import android.util.Log
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.fastjson.JSON
-import com.elvishew.xlog.XLog
+//import com.elvishew.xlog.XLog
 import com.sollyu.android.appenv.R
 import com.sollyu.android.appenv.commons.SettingsXposed
 import com.sollyu.android.appenv.define.AppEnvConstants

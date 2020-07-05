@@ -12,7 +12,7 @@ import android.Manifest
 import android.os.Handler
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
-import com.elvishew.xlog.XLog
+//import com.elvishew.xlog.XLog
 import com.sollyu.android.appenv.R
 import com.sollyu.android.appenv.commons.Application
 import ru.alexbykov.nopermission.PermissionHelper
@@ -31,7 +31,7 @@ class ActivitySplash : ActivityBase(), Runnable {
 
         /* Xposed 没有成功的状态 */
         if (!Application.Instance.isXposedWork()) {
-            XLog.e("Xposed Is Not Work")
+//            XLog.e("Xposed Is Not Work")
             MaterialDialog
                     .Builder(activity)
                     .title(R.string.splash_xposed_not_work_title)
@@ -40,7 +40,7 @@ class ActivitySplash : ActivityBase(), Runnable {
                     .onAny { _, _ -> ActivityMain.launch(activity) }
                     .canceledOnTouchOutside(false)
                     .show()
-            return
+//            return
         }
 
         /* 状态检查结束、进入主界面 */
@@ -50,26 +50,26 @@ class ActivitySplash : ActivityBase(), Runnable {
     override fun onInitDone() {
         super.onInitDone()
 
-        permissionHelper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        permissionHelper.onSuccess {
-            Handler().postAtTime(this, 1000)
-        }
-        permissionHelper.onDenied {
-            MaterialDialog.Builder(activity)
-                    .title(R.string.tip)
-                    .content(R.string.splash_permission_write_storage_denied_content)
-                    .positiveText(android.R.string.ok).onPositive { _, _ -> Handler().postAtTime(this, 1000) }
-                    .show()
-        }
-        permissionHelper.onNeverAskAgain {
-            Toast.makeText(activity, R.string.splash_permission_write_storage_denied_content, Toast.LENGTH_LONG).show()
-        }
-        permissionHelper.run()
+//        permissionHelper.check(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//        permissionHelper.onSuccess {
+//            Handler().postAtTime(this, 1000)
+//        }
+//        permissionHelper.onDenied {
+//            MaterialDialog.Builder(activity)
+//                    .title(R.string.tip)
+//                    .content(R.string.splash_permission_write_storage_denied_content)
+//                    .positiveText(android.R.string.ok).onPositive { _, _ -> Handler().postAtTime(this, 1000) }
+//                    .show()
+//        }
+//        permissionHelper.onNeverAskAgain {
+//            Toast.makeText(activity, R.string.splash_permission_write_storage_denied_content, Toast.LENGTH_LONG).show()
+//        }
+        run()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun getMobclickAgentTag(): String {

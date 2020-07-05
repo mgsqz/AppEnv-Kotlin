@@ -16,7 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.sollyu.android.appenv.commons.Settings
 import com.sollyu.android.appenv.commons.SettingsXposed
-import com.umeng.analytics.MobclickAgent
+//import com.umeng.analytics.MobclickAgent
 
 /**
  * 作者：sollyu
@@ -57,14 +57,14 @@ abstract class ActivityBase : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        MobclickAgent.onPageStart(getMobclickAgentTag())
-        MobclickAgent.onResume(activity)
+//        MobclickAgent.onPageStart(getMobclickAgentTag())
+//        MobclickAgent.onResume(activity)
     }
 
     override fun onPause() {
         super.onPause()
-        MobclickAgent.onPageEnd(getMobclickAgentTag())
-        MobclickAgent.onPause(activity)
+//        MobclickAgent.onPageEnd(getMobclickAgentTag())
+//        MobclickAgent.onPause(activity)
 
         SettingsXposed.Instance.resetPermissions()
     }
