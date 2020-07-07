@@ -18,22 +18,22 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"/>
-        <item
-            android:id="@+id/nav_cloud"
-            android:icon="@drawable/ic_wb_cloudy"
-            android:title="@string/cloud"/>
+<!--        <item-->
+<!--            android:id="@+id/nav_cloud"-->
+<!--            android:icon="@drawable/ic_wb_cloudy"-->
+<!--            android:title="@string/cloud"/>-->
     </group>
 
     <item android:checkableBehavior="single" android:title="@string/other">
         <menu>
-            <item
-                android:id="@+id/nav_donate"
-                android:icon="@drawable/ic_credit_card"
-                android:title="@string/donate"/>
-            <item
-                android:id="@+id/nav_score"
-                android:icon="@drawable/ic_thumb_up"
-                android:title="@string/score"/>
+<!--            <item-->
+<!--                android:id="@+id/nav_donate"-->
+<!--                android:icon="@drawable/ic_credit_card"-->
+<!--                android:title="@string/donate"/>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_score"-->
+<!--                android:icon="@drawable/ic_thumb_up"-->
+<!--                android:title="@string/score"/>-->
             <item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_info"

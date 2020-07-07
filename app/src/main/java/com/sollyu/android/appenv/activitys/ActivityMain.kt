@@ -157,24 +157,24 @@ class ActivityMain : ActivityBase(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_settings -> {
                 ActivitySettings.launch(activity)
             }
-            R.id.nav_donate -> {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://mobilecodec.alipay.com/client_download.htm?qrcode=apynckrfcfi5atfy45")))
-            }
-            R.id.nav_cloud -> {
-                ActivityWeb.launch(activity, "应用变量 后台", AppEnvConstants.URL_APPENV_SERVER)
-                // ActivityRegister.launch(activity)
-                //Snackbar.make(fab, "后台维护中……", Snackbar.LENGTH_LONG).show()
-            }
+//            R.id.nav_donate -> {
+//                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://mobilecodec.alipay.com/client_download.htm?qrcode=apynckrfcfi5atfy45")))
+//            }
+//            R.id.nav_cloud -> {
+//                ActivityWeb.launch(activity, "应用变量 后台", AppEnvConstants.URL_APPENV_SERVER)
+//                // ActivityRegister.launch(activity)
+//                //Snackbar.make(fab, "后台维护中……", Snackbar.LENGTH_LONG).show()
+//            }
             R.id.nav_about -> {
                 ActivityAbout.launch(activity)
             }
-            R.id.nav_score -> {
-                try {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)))
-                } catch (e: Exception) {
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)))
-                }
-            }
+//            R.id.nav_score -> {
+//                try {
+//                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)))
+//                } catch (e: Exception) {
+//                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)))
+//                }
+//            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
