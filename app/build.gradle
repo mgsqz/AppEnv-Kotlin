@@ -85,7 +85,7 @@ dependencies {
     implementation 'com.github.rubensousa:bottomsheetbuilder:1.6.0'
     implementation 'ru.alexbykov:nopermission:1.1.2'
     implementation 'com.just.agentweb:agentweb:4.0.2'
-    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
+//    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
 //    implementation "com.meituan.android.walle:library:$walle_version"
 }
 

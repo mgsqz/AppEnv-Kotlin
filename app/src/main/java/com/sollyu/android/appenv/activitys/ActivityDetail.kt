@@ -665,10 +665,10 @@ class ActivityDetail : ActivityBase() {
     /**
      *
      */
-    @Event(R.id.menu_scan_qr_code)
-    private fun onItemClickScanQRCode(view: View) {
-        ActivityScanQR.launch(activity, ActivityScanQR.FROM_DETAIL)
-    }
+//    @Event(R.id.menu_scan_qr_code)
+//    private fun onItemClickScanQRCode(view: View) {
+////        ActivityScanQR.launch(activity, ActivityScanQR.FROM_DETAIL)
+//    }
 
     /**
      *
