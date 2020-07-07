@@ -33,27 +33,27 @@
                 android:layout_marginTop="20dp"
                 app:leftText="@string/settings_show_system_app" />
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
             <com.sollyu.android.option.item.OptionItemSwitch
                 android:id="@+id/oiwShowDesktopIcon"
                 style="@style/OptionItem"
                 app:leftText="@string/settings_show_desktop_icon" />
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivUpdatePhoneList"
-                style="@style/OptionItem"
-                android:layout_marginTop="20dp"
-                app:leftText="@string/settings_update_phone"
-                app:rightText="3" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivUpdatePhoneList"-->
+<!--                style="@style/OptionItem"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                app:leftText="@string/settings_update_phone"-->
+<!--                app:rightText="3" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivUpdateSoftVersion"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_update_soft"
-                app:rightText="3.0.1" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivUpdateSoftVersion"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_update_soft"-->
+<!--                app:rightText="3.0.1" />-->
 
 
             <com.sollyu.android.option.item.OptionItemSwitch
@@ -62,14 +62,14 @@
                 android:layout_marginTop="20dp"
                 app:leftText="@string/settings_use_root" />
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
             <com.sollyu.android.option.item.OptionItemSwitch
                 android:id="@+id/oiwAppDataConfig"
                 style="@style/OptionItem"
                 app:leftText="@string/settings_use_app_data_config" />
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
             <com.sollyu.android.option.item.OptionItemSwitch
                 android:id="@+id/oiwUseDataLocalTmp"
                 style="@style/OptionItem"
@@ -77,65 +77,65 @@
 
 
             <!--Author-->
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivAuthor"
-                style="@style/OptionItem"
-                android:layout_marginTop="20dp"
-                app:leftText="@string/settings_author"
-                app:rightText="Sollyu" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivAuthor"-->
+<!--                style="@style/OptionItem"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                app:leftText="@string/settings_author"-->
+<!--                app:rightText="Sollyu" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivBlog"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_blog"
-                app:rightText="www.sollyu.com" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivBlog"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_blog"-->
+<!--                app:rightText="www.sollyu.com" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivEMail"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_email"
-                app:rightText="king.sollyu@gmail.com" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivEMail"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_email"-->
+<!--                app:rightText="king.sollyu@gmail.com" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivGithub"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_github"
-                app:rightText="github.com/kingsollyu/AppEnv-Kotlin" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivGithub"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_github"-->
+<!--                app:rightText="github.com/kingsollyu/AppEnv-Kotlin" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivIssues"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_issues"
-                app:rightText="" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivIssues"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_issues"-->
+<!--                app:rightText="" />-->
 
             <!--Thinks-->
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivThinks"
-                style="@style/OptionItem"
-                android:layout_marginTop="20dp"
-                app:leftText="@string/settings_thinks" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivThinks"-->
+<!--                style="@style/OptionItem"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                app:leftText="@string/settings_thinks" />-->
 
-            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+<!--            <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />-->
 
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivLog"
-                style="@style/OptionItem"
-                app:leftText="@string/settings_log" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivLog"-->
+<!--                style="@style/OptionItem"-->
+<!--                app:leftText="@string/settings_log" />-->
 
             <!--Licence-->
-            <com.sollyu.android.option.item.OptionItemView
-                android:id="@+id/oivLicence"
-                style="@style/OptionItem"
-                android:layout_marginTop="20dp"
-                app:leftText="Licence" />
+<!--            <com.sollyu.android.option.item.OptionItemView-->
+<!--                android:id="@+id/oivLicence"-->
+<!--                style="@style/OptionItem"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                app:leftText="Licence" />-->
 
 
         </LinearLayout>
