@@ -153,6 +153,11 @@ public class XposedEntryJava implements IXposedHookLoadPackage {
         if (xposedPackageJson.has("android.os.Build.VERSION.RELEASE")) {
             XposedHelpers.setStaticObjectField(Build.VERSION.class, "RELEASE", xposedPackageJson.getString("android.os.Build.VERSION.RELEASE"));
         }
+
+        //拦截 android.os.Build.Display FINGERPRINT http.agent
+        XposedHelpers.setStaticObjectField(Build.class, "DISPLAY", "unkonw");
+        XposedHelpers.setStaticObjectField(Build.class, "FINGERPRINT", "unkonw");
+
         XposedBridgeHookAllMethods(XposedHelpers.findClass("android.os.SystemProperties", loadPackageParam.classLoader), "get", new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam methodHookParam) throws Throwable {
@@ -174,6 +179,18 @@ public class XposedEntryJava implements IXposedHookLoadPackage {
                 }
             });
         }
+        if (xposedPackageJson.has("android.os.SystemProperties.android_id")) {
+            XposedBridgeHookAllMethods(android.provider.Settings.Secure.class, "getString", new XC_MethodHook() {
+                @Override
+                protected void afterHookedMethod(MethodHookParam methodHookParam) throws Throwable {
+                    super.afterHookedMethod(methodHookParam);
+                    if (methodHookParam.args.length > 1 && "android_id".equals(methodHookParam.args[1].toString())) {
+                        methodHookParam.setResult(xposedPackageJson.getString("android.os.SystemProperties.android_id"));
+                    }
+                }
+            });
+        }
+
 
         if (xposedPackageJson.has("android.telephony.TelephonyManager.getLine1Number")) {
             XposedBridgeHookAllMethods(TelephonyManager.class, "getLine1Number", new MethodHookValue(xposedPackageJson.getString("android.telephony.TelephonyManager.getLine1Number")));
