@@ -210,9 +210,9 @@ class ActivityDetail : ActivityBase() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menuDeleteConfig -> {
-                this.onItemClickDeleteConfig()
-            }
+//            R.id.menuDeleteConfig -> {
+//                this.onItemClickDeleteConfig()
+//            }
 //            R.id.menuUploadConfig -> {
 //                this.onItemClickUploadConfig()
 //            }
@@ -263,6 +263,12 @@ class ActivityDetail : ActivityBase() {
             Snackbar.make(view, R.string.detail_finish_snackbar, Snackbar.LENGTH_LONG).setAction(R.string.force_stop_app) { onItemClickShowApp(view) }.show()
         }
     }
+
+    @Event(R.id.menu_del_config)
+    private fun onBtnClickdel(view: View) {
+        this.onItemClickDeleteConfig()
+    }
+
 
     private fun jsonObjectToUi(jsonObject: JSONObject?) {
         val beanHookInfo = jsonObject?.toJavaObject(BeanHookInfo::class.java)

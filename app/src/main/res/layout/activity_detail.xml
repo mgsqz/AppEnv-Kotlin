@@ -77,6 +77,14 @@
             android:src="@drawable/ic_cancel_w"
             app:fab_label="@string/force_stop_app"
             app:fab_size="mini" />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/menu_del_config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_save_w"
+            app:fab_colorNormal="#000000"
+            app:fab_label="@string/delete_config"
+            app:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/menu_save_config"

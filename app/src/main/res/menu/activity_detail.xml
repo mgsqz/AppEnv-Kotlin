@@ -11,7 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activitys.ActivityDetail">
     <group>
-        <item android:title="@string/delete_config" android:id="@+id/menuDeleteConfig"  />
+<!--        <item android:title="@string/delete_config" android:id="@+id/menuDeleteConfig"  />-->
 <!--        <item android:title="@string/upload_config" android:id="@+id/menuUploadConfig"  />-->
 <!--        <item android:title="@string/remote_random" android:id="@+id/menuRemoteRandom"  />-->
         <item android:title="@string/save_solution"   android:id="@+id/menuSolutionSave" />
