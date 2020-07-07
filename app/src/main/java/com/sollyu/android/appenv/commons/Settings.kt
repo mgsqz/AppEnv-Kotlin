@@ -68,9 +68,9 @@ class Settings {
     /**
      * 是否显示桌面图标
      */
-    var isShowDesktopIcon: Boolean
-        get() = jsonObject.getBoolean("isShowDesktopIcon") ?: true
-        set(value) = jsonObject.put("isShowDesktopIcon", value).let { save() }
+//    var isShowDesktopIcon: Boolean
+//        get() = jsonObject.getBoolean("isShowDesktopIcon") ?: true
+//        set(value) = jsonObject.put("isShowDesktopIcon", value).let { save() }
 
     /**
      * 是否直接使用root权限

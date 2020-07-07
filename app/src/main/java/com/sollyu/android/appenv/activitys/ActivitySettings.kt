@@ -75,7 +75,7 @@ class ActivitySettings : ActivityBase() {
             Settings.Instance.isUseDataLocalTmpConfig = true
 
         oiwShowSystemApp.setCheckedImmediatelyNoEvent(Settings.Instance.isShowSystemApp)
-        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
+//        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
 
         oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
         oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
@@ -128,30 +128,30 @@ class ActivitySettings : ActivityBase() {
         EventBus.getDefault().postSticky(EventSample(EventSample.TYPE.MAIN_REFRESH))
     }
 
-    @Event(R.id.oiwShowDesktopIcon)
-    private fun onBtnClickShowDesktopIcon(@Suppress("UNUSED_PARAMETER") view: View) {
-        Settings.Instance.isShowDesktopIcon = oiwShowDesktopIcon.isChecked
-        if (oiwShowDesktopIcon.isChecked) {
-            packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
-        }else{
-            MaterialDialog.Builder(activity)
-                    .title(R.string.settings_show_desktop_icon)
-                    .content(R.string.settings_show_desktop_icon_tip)
-                    .positiveText(android.R.string.ok)
-                    .negativeText(android.R.string.cancel)
-                    .onPositive { _, _ ->
-                        Settings.Instance.isShowDesktopIcon = false
-                        packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
-                        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
-                    }
-                    .onNegative { _, _ ->
-                        Settings.Instance.isShowDesktopIcon = true
-                        packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
-                        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
-                    }
-                    .show()
-        }
-    }
+//    @Event(R.id.oiwShowDesktopIcon)
+//    private fun onBtnClickShowDesktopIcon(@Suppress("UNUSED_PARAMETER") view: View) {
+//        Settings.Instance.isShowDesktopIcon = oiwShowDesktopIcon.isChecked
+//        if (oiwShowDesktopIcon.isChecked) {
+//            packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
+//        }else{
+//            MaterialDialog.Builder(activity)
+//                    .title(R.string.settings_show_desktop_icon)
+//                    .content(R.string.settings_show_desktop_icon_tip)
+//                    .positiveText(android.R.string.ok)
+//                    .negativeText(android.R.string.cancel)
+//                    .onPositive { _, _ ->
+//                        Settings.Instance.isShowDesktopIcon = false
+//                        packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP)
+//                        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
+//                    }
+//                    .onNegative { _, _ ->
+//                        Settings.Instance.isShowDesktopIcon = true
+//                        packageManager.setComponentEnabledSetting(ComponentName(activity, "com.sollyu.android.appenv.activitys.ActivitySplashAlias"), PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
+//                        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
+//                    }
+//                    .show()
+//        }
+//    }
 
     @Event(R.id.oiwUseRoot)
     private fun onBtnClickUseRoot(view: View) {
