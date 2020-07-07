@@ -80,7 +80,7 @@ class ActivitySettings : ActivityBase() {
         oiwShowSystemApp.setCheckedImmediatelyNoEvent(Settings.Instance.isShowSystemApp)
 //        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
 
-        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
+//        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
 //        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
 //        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
 //        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
@@ -156,32 +156,32 @@ class ActivitySettings : ActivityBase() {
 //        }
 //    }
 
-    @Event(R.id.oiwUseRoot)
-    private fun onBtnClickUseRoot(view: View) {
-        if (oiwUseRoot.isChecked) {
-            MaterialDialog.Builder(activity)
-                    .title(R.string.settings_use_root)
-                    .content(R.string.settings_use_root_content)
-                    .positiveText(android.R.string.ok)
-                    .negativeText(android.R.string.cancel)
-                    .onPositive { _, _ ->
-                        if (Shell.SU.available()) {
-                            Settings.Instance.isUseRoot = true
-                        } else {
-                            Settings.Instance.isUseRoot = false
-                            Toast.makeText(activity, R.string.settings_use_root_available_fail, Toast.LENGTH_LONG).show()
-                        }
-                        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
-                    }
-                    .onNegative { _, _ ->
-                        Settings.Instance.isUseRoot = false
-                        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
-                    }
-                    .show()
-        }else{
-            Settings.Instance.isUseRoot = false
-        }
-    }
+//    @Event(R.id.oiwUseRoot)
+//    private fun onBtnClickUseRoot(view: View) {
+//        if (oiwUseRoot.isChecked) {
+//            MaterialDialog.Builder(activity)
+//                    .title(R.string.settings_use_root)
+//                    .content(R.string.settings_use_root_content)
+//                    .positiveText(android.R.string.ok)
+//                    .negativeText(android.R.string.cancel)
+//                    .onPositive { _, _ ->
+//                        if (Shell.SU.available()) {
+//                            Settings.Instance.isUseRoot = true
+//                        } else {
+//                            Settings.Instance.isUseRoot = false
+//                            Toast.makeText(activity, R.string.settings_use_root_available_fail, Toast.LENGTH_LONG).show()
+//                        }
+//                        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
+//                    }
+//                    .onNegative { _, _ ->
+//                        Settings.Instance.isUseRoot = false
+//                        oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
+//                    }
+//                    .show()
+//        }else{
+//            Settings.Instance.isUseRoot = false
+//        }
+//    }
 
 //    @Event(R.id.oiwAppDataConfig)
 //    private fun onBtnClickUseSdConfig(view: View) {

@@ -119,6 +119,10 @@ class SettingsXposed {
      */
     @Synchronized
     fun save():Boolean {
+        if (!Shell.SU.available()) {
+            Log.e("SettingsXposed","no Root")
+            return false
+        }
         if (!Instance.fileDataLocalConfig.exists()) {
             Shell.SU.run("touch /data/local/tmp/appenv.xposed.json")
             Shell.SU.run("chmod 777 /data/local/tmp/appenv.xposed.json")

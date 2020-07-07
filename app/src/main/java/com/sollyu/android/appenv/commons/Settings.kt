@@ -75,9 +75,8 @@ class Settings {
     /**
      * 是否直接使用root权限
      */
-    var isUseRoot: Boolean
-        get() = jsonObject.getBoolean("isUseRoot") ?: false
-        set(value) = jsonObject.put("isUseRoot", value).let { save() }
+    var isUseRoot = true
+
 
     /**
      * 是否使用SD卡配置

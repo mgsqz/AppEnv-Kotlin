@@ -28,6 +28,7 @@ import android.util.TypedValue
 import android.view.*
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import com.sollyu.android.appenv.R
 import com.sollyu.android.appenv.commons.Application
 import com.sollyu.android.appenv.commons.Settings
@@ -35,6 +36,7 @@ import com.sollyu.android.appenv.commons.SettingsXposed
 import com.sollyu.android.appenv.define.AppEnvConstants
 import com.sollyu.android.appenv.events.EventSample
 import com.sollyu.android.option.item.OptionItemView
+import eu.chainfire.libsuperuser.Shell
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_activity_main.*
 import kotlinx.android.synthetic.main.content_activity_main.*
@@ -92,7 +94,9 @@ class ActivityMain : ActivityBase(), NavigationView.OnNavigationItemSelectedList
         if (!Application.Instance.isXposedWork()) {
             Snackbar.make(fab, R.string.main_xposed_fail, Snackbar.LENGTH_INDEFINITE).show();
         }
+
     }
+
 
     /**
      * 返回键被按下
