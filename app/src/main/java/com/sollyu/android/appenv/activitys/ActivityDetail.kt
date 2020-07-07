@@ -37,7 +37,7 @@ import com.sollyu.android.appenv.commons.*
 import com.sollyu.android.appenv.commons.Random
 import com.sollyu.android.appenv.define.AppEnvConstants
 import com.sollyu.android.appenv.events.EventSample
-import com.squareup.okhttp.*
+//import com.squareup.okhttp.*
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.content_activity_detail.*
 import kotlinx.android.synthetic.main.include_toolbar.*

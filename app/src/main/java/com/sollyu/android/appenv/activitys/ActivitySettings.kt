@@ -28,10 +28,10 @@ import com.sollyu.android.appenv.commons.Phones
 import com.sollyu.android.appenv.commons.Settings
 import com.sollyu.android.appenv.commons.SettingsXposed
 import com.sollyu.android.appenv.events.EventSample
-import com.squareup.okhttp.Callback
-import com.squareup.okhttp.OkHttpClient
-import com.squareup.okhttp.Request
-import com.squareup.okhttp.Response
+//import com.squareup.okhttp.Callback
+//import com.squareup.okhttp.OkHttpClient
+//import com.squareup.okhttp.Request
+//import com.squareup.okhttp.Response
 import de.psdev.licensesdialog.LicensesDialog
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20
 import de.psdev.licensesdialog.licenses.MITLicense

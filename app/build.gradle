@@ -75,7 +75,7 @@ dependencies {
     implementation 'org.xutils:xutils:3.5.0'
 //    implementation 'com.elvishew:xlog:1.4.0'
     implementation 'com.alibaba:fastjson:1.1.56.android'
-    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+//    implementation 'com.squareup.okhttp:okhttp:2.7.5'
     implementation 'com.github.kingsollyu:NotProguard:1.0.0'
     implementation 'com.github.kingsollyu:OptionItem:1.2.2'
     implementation 'com.github.clans:fab:1.6.4'
