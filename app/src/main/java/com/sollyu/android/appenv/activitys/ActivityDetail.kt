@@ -24,6 +24,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
@@ -254,9 +255,13 @@ class ActivityDetail : ActivityBase() {
      */
     @Event(R.id.menu_save_config)
     private fun onBtnClickFinish(view: View) {
-        SettingsXposed.Instance.set(appInfo.packageName, uiToJsonObject())
+       var isSuccess =  SettingsXposed.Instance.set(appInfo.packageName, uiToJsonObject())
         EventBus.getDefault().postSticky(EventSample(EventSample.TYPE.MAIN_REFRESH))
-        Snackbar.make(view, R.string.detail_finish_snackbar, Snackbar.LENGTH_LONG).setAction(R.string.force_stop_app) { onItemClickShowApp(view) }.show()
+        if (!isSuccess){
+            Toast.makeText(this,"保存配置文件失败！",Toast.LENGTH_SHORT).show()
+        }else{
+            Snackbar.make(view, R.string.detail_finish_snackbar, Snackbar.LENGTH_LONG).setAction(R.string.force_stop_app) { onItemClickShowApp(view) }.show()
+        }
     }
 
     private fun jsonObjectToUi(jsonObject: JSONObject?) {
@@ -613,7 +618,10 @@ class ActivityDetail : ActivityBase() {
      *
      */
     private fun onItemClickDeleteConfig() {
-        SettingsXposed.Instance.remove(appInfo.packageName)
+       var isSuccess =  SettingsXposed.Instance.remove(appInfo.packageName)
+        if (!isSuccess){
+            Toast.makeText(this,"删除配置文件失败",Toast.LENGTH_SHORT).show()
+        }
         EventBus.getDefault().postSticky(EventSample(EventSample.TYPE.MAIN_REFRESH))
         activity.finish()
     }

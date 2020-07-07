@@ -66,6 +66,6 @@ abstract class ActivityBase : AppCompatActivity() {
 //        MobclickAgent.onPageEnd(getMobclickAgentTag())
 //        MobclickAgent.onPause(activity)
 
-        SettingsXposed.Instance.resetPermissions()
+//        SettingsXposed.Instance.resetPermissions()
     }
 }

@@ -70,17 +70,20 @@ class ActivitySettings : ActivityBase() {
 
     override fun onInitData() {
         super.onInitData()
-        val dataLocalTmpConfigFile = File("/data/local/tmp/appenv.xposed.json")
-        if (dataLocalTmpConfigFile.exists() && dataLocalTmpConfigFile.canRead() && dataLocalTmpConfigFile.canWrite())
-            Settings.Instance.isUseDataLocalTmpConfig = true
+//        val dataLocalTmpConfigFile = File("/data/local/tmp/appenv.xposed.json")
+//        if (!dataLocalTmpConfigFile.exists() && !dataLocalTmpConfigFile.canRead() && !dataLocalTmpConfigFile.canWrite()){
+//            todo 初始化配置文件
+//            SettingsXposed.Instance.save()
+//        }
+//            Settings.Instance.isUseDataLocalTmpConfig = true
 
         oiwShowSystemApp.setCheckedImmediatelyNoEvent(Settings.Instance.isShowSystemApp)
 //        oiwShowDesktopIcon.setCheckedImmediatelyNoEvent(Settings.Instance.isShowDesktopIcon)
 
         oiwUseRoot.setCheckedImmediatelyNoEvent(Settings.Instance.isUseRoot)
-        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
-        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
-        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
+//        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
+//        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
+//        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
 
 //        oivUpdateSoftVersion.setRightText(BuildConfig.VERSION_NAME)
 //        oivUpdatePhoneList.setRightText(Phones.Instance.versionName)
@@ -180,81 +183,81 @@ class ActivitySettings : ActivityBase() {
         }
     }
 
-    @Event(R.id.oiwAppDataConfig)
-    private fun onBtnClickUseSdConfig(view: View) {
-        if (oiwAppDataConfig.isChecked) {
-            MaterialDialog.Builder(activity)
-                    .title(R.string.settings_use_app_data_config)
-                    .content(R.string.settings_use_app_data_config_content)
-                    .positiveText(android.R.string.ok)
-                    .negativeText(android.R.string.cancel)
-                    .onPositive { _, _ ->
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            MaterialDialog.Builder(activity).title(R.string.tip).content("7.0+系统不支持使用「内置存储」").positiveText(android.R.string.ok).show()
-                            Settings.Instance.isUseAppDataConfig = false
-                        }else{
-                            Settings.Instance.isUseAppDataConfig = true
-                        }
-                        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
-                        SettingsXposed.Save()
-                        SettingsXposed.Reload()
-                    }
-                    .onNegative { _, _ ->
-                        Settings.Instance.isUseAppDataConfig = false
-                        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
-                        SettingsXposed.Save()
-                        SettingsXposed.Reload()
-                    }
-                    .show()
-        }else{
-            Settings.Instance.isUseAppDataConfig = false
-            SettingsXposed.Save()
-            SettingsXposed.Reload()
-        }
-    }
+//    @Event(R.id.oiwAppDataConfig)
+//    private fun onBtnClickUseSdConfig(view: View) {
+//        if (oiwAppDataConfig.isChecked) {
+//            MaterialDialog.Builder(activity)
+//                    .title(R.string.settings_use_app_data_config)
+//                    .content(R.string.settings_use_app_data_config_content)
+//                    .positiveText(android.R.string.ok)
+//                    .negativeText(android.R.string.cancel)
+//                    .onPositive { _, _ ->
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+//                            MaterialDialog.Builder(activity).title(R.string.tip).content("7.0+系统不支持使用「内置存储」").positiveText(android.R.string.ok).show()
+//                            Settings.Instance.isUseAppDataConfig = false
+//                        }else{
+//                            Settings.Instance.isUseAppDataConfig = true
+//                        }
+//                        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
+//                        SettingsXposed.Save()
+//                        SettingsXposed.Reload()
+//                    }
+//                    .onNegative { _, _ ->
+//                        Settings.Instance.isUseAppDataConfig = false
+//                        oiwAppDataConfig.setCheckedImmediatelyNoEvent(Settings.Instance.isUseAppDataConfig)
+//                        SettingsXposed.Save()
+//                        SettingsXposed.Reload()
+//                    }
+//                    .show()
+//        }else{
+//            Settings.Instance.isUseAppDataConfig = false
+//            SettingsXposed.Save()
+//            SettingsXposed.Reload()
+//        }
+//    }
 
-    @Event(R.id.oiwUseDataLocalTmp)
-    private fun onBtnClickUseDataLocalTmp(view: View) {
-        if (oiwUseDataLocalTmp.isChecked) {
-            MaterialDialog.Builder(activity)
-                    .title(R.string.settings_use_data_local_tmp_title)
-                    .content(R.string.settings_use_data_local_tmp_content)
-                    .positiveText(android.R.string.ok)
-                    .negativeText(android.R.string.cancel)
-                    .onPositive { _, _ ->
-                        if (Shell.SU.available()) {
-                            try {
-                                Settings.Instance.isUseDataLocalTmpConfig = true
-                                SettingsXposed.Save()
-                                SettingsXposed.Reload()
-                            } catch (e: Exception) {
-                                Settings.Instance.isUseDataLocalTmpConfig = false
-                            }
-                        }else {
-                            Settings.Instance.isUseDataLocalTmpConfig = false
-                        }
-                        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
-                        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
-                        SettingsXposed.Save()
-                        SettingsXposed.Reload()
-                    }
-                    .onNegative { _, _ ->
-                        Settings.Instance.isUseDataLocalTmpConfig = false
-                        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
-                        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
-                        SettingsXposed.Save()
-                        SettingsXposed.Reload()
-                    }
-                    .show()
-        }else{
-            Settings.Instance.isUseDataLocalTmpConfig = false
-            oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
-            oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
-            SettingsXposed.Save()
-            SettingsXposed.Reload()
-        }
-
-    }
+//    @Event(R.id.oiwUseDataLocalTmp)
+//    private fun onBtnClickUseDataLocalTmp(view: View) {
+//        if (oiwUseDataLocalTmp.isChecked) {
+//            MaterialDialog.Builder(activity)
+//                    .title(R.string.settings_use_data_local_tmp_title)
+//                    .content(R.string.settings_use_data_local_tmp_content)
+//                    .positiveText(android.R.string.ok)
+//                    .negativeText(android.R.string.cancel)
+//                    .onPositive { _, _ ->
+//                        if (Shell.SU.available()) {
+//                            try {
+//                                Settings.Instance.isUseDataLocalTmpConfig = true
+//                                SettingsXposed.Save()
+//                                SettingsXposed.Reload()
+//                            } catch (e: Exception) {
+//                                Settings.Instance.isUseDataLocalTmpConfig = false
+//                            }
+//                        }else {
+//                            Settings.Instance.isUseDataLocalTmpConfig = false
+//                        }
+////                        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
+//                        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
+//                        SettingsXposed.Save()
+//                        SettingsXposed.Reload()
+//                    }
+//                    .onNegative { _, _ ->
+//                        Settings.Instance.isUseDataLocalTmpConfig = false
+////                        oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
+//                        oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
+//                        SettingsXposed.Save()
+//                        SettingsXposed.Reload()
+//                    }
+//                    .show()
+//        }else{
+//            Settings.Instance.isUseDataLocalTmpConfig = false
+////            oiwAppDataConfig.switch.isEnabled = !Settings.Instance.isUseDataLocalTmpConfig
+//            oiwUseDataLocalTmp.setCheckedImmediatelyNoEvent(Settings.Instance.isUseDataLocalTmpConfig)
+//            SettingsXposed.Save()
+//            SettingsXposed.Reload()
+//        }
+//
+//    }
 
 //    @Event(R.id.oivLicence)
 //    private fun onBtnClickLicence(@Suppress("UNUSED_PARAMETER") view: View) {
