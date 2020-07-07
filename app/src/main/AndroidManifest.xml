@@ -25,13 +25,12 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".activitys.ActivitySplash"
-            android:label="@string/app_name"
-            android:theme="@style/SpeedyBrandTheme">
+            android:name=".activitys.ActivityMain"
+          >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +41,7 @@
         <activity-alias
             android:name=".activitys.ActivitySplashAlias"
             android:label="@string/app_name"
-            android:targetActivity=".activitys.ActivitySplash">
+            android:targetActivity=".activitys.ActivityMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +50,7 @@
             </intent-filter>
         </activity-alias>
 
-        <activity android:name=".activitys.ActivityMain" />
+<!--        <activity android:name=".activitys.ActivityMain" />-->
         <activity android:name=".activitys.ActivitySettings" />
         <activity android:name=".activitys.ActivityAbout" />
 <!--        <activity android:name=".activitys.ActivityWeb" />-->
