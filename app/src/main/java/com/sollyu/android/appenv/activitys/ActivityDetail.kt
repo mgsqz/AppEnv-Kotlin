@@ -212,9 +212,9 @@ class ActivityDetail : ActivityBase() {
             R.id.menuDeleteConfig -> {
                 this.onItemClickDeleteConfig()
             }
-            R.id.menuUploadConfig -> {
-                this.onItemClickUploadConfig()
-            }
+//            R.id.menuUploadConfig -> {
+//                this.onItemClickUploadConfig()
+//            }
             R.id.menuSolutionSave -> {
                 this.onItemClickSolutionSave()
             }
@@ -224,9 +224,9 @@ class ActivityDetail : ActivityBase() {
             R.id.menuSolutionDele -> {
                 this.onItemClickSolutionDelete()
             }
-            R.id.menuRemoteRandom -> {
-                this.onItemClickRemoteRandom()
-            }
+//            R.id.menuRemoteRandom -> {
+//                this.onItemClickRemoteRandom()
+//            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -618,49 +618,49 @@ class ActivityDetail : ActivityBase() {
         activity.finish()
     }
 
-    private fun onItemClickUploadConfig() {
-        val cookie = AgentWebConfig.getCookiesByUrl(AppEnvConstants.URL_APPENV_SERVER)
-        if (cookie.isNullOrEmpty()) {
-            MaterialDialog.Builder(activity).title(R.string.tip).content("没有检测到您登陆").positiveText(android.R.string.ok).show()
-            return
-        }
-
-        MaterialDialog.Builder(activity)
-                .title(R.string.tip)
-                .input("请输入保存方案的名称", "", false) { dialog, input ->
-                    dialog.dismiss()
-
-                    val uiConfigJsonObject = uiToJsonObject();
-                    uiConfigJsonObject.put("config.name", input.toString())
-                    uiConfigJsonObject.put("app.package.label", appInfo.loadLabel())
-
-                    val materialDialog = MaterialDialog.Builder(activity).title(R.string.tip).content("正在上传……").progress(true, 0).cancelable(false).show()
-                    val formBody = FormEncodingBuilder().add(Base64.encodeToString(appInfo.packageName.toByteArray(), Base64.NO_WRAP), uiConfigJsonObject.toJSONString()).build()
-                    OkHttpClient().newCall(Request.Builder().url(AppEnvConstants.URL_APPENV_UPLOAD_PACKAGE).header("Cookie", cookie).post(formBody).build()).enqueue(object : Callback {
-                        override fun onFailure(request: Request, e: IOException) {
-                            materialDialog.dismiss()
-                            activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n" + Log.getStackTraceString(e)).positiveText(android.R.string.ok).show() }
-                        }
-
-                        override fun onResponse(response: Response) {
-                            materialDialog.dismiss()
-                            try {
-                                val serverResult = response.body().string()
-//                                XLog.d(serverResult)
-                                val jsonObject = JSON.parseObject(serverResult)
-                                if (jsonObject.getInteger("ret") == 200) {
-                                    activity.runOnUiThread { Snackbar.make(fab, "上传成功", Snackbar.LENGTH_LONG).show() }
-                                } else {
-                                    activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n" + jsonObject.getString("msg")).positiveText(android.R.string.ok).show() }
-                                }
-                            } catch (throwable: Throwable) {
-                                activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n请确定您已经正确的登陆").positiveText(android.R.string.ok).show() }
-                            }
-                        }
-                    })
-                }
-                .show()
-    }
+//    private fun onItemClickUploadConfig() {
+//        val cookie = AgentWebConfig.getCookiesByUrl(AppEnvConstants.URL_APPENV_SERVER)
+//        if (cookie.isNullOrEmpty()) {
+//            MaterialDialog.Builder(activity).title(R.string.tip).content("没有检测到您登陆").positiveText(android.R.string.ok).show()
+//            return
+//        }
+//
+//        MaterialDialog.Builder(activity)
+//                .title(R.string.tip)
+//                .input("请输入保存方案的名称", "", false) { dialog, input ->
+//                    dialog.dismiss()
+//
+//                    val uiConfigJsonObject = uiToJsonObject();
+//                    uiConfigJsonObject.put("config.name", input.toString())
+//                    uiConfigJsonObject.put("app.package.label", appInfo.loadLabel())
+//
+//                    val materialDialog = MaterialDialog.Builder(activity).title(R.string.tip).content("正在上传……").progress(true, 0).cancelable(false).show()
+//                    val formBody = FormEncodingBuilder().add(Base64.encodeToString(appInfo.packageName.toByteArray(), Base64.NO_WRAP), uiConfigJsonObject.toJSONString()).build()
+//                    OkHttpClient().newCall(Request.Builder().url(AppEnvConstants.URL_APPENV_UPLOAD_PACKAGE).header("Cookie", cookie).post(formBody).build()).enqueue(object : Callback {
+//                        override fun onFailure(request: Request, e: IOException) {
+//                            materialDialog.dismiss()
+//                            activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n" + Log.getStackTraceString(e)).positiveText(android.R.string.ok).show() }
+//                        }
+//
+//                        override fun onResponse(response: Response) {
+//                            materialDialog.dismiss()
+//                            try {
+//                                val serverResult = response.body().string()
+////                                XLog.d(serverResult)
+//                                val jsonObject = JSON.parseObject(serverResult)
+//                                if (jsonObject.getInteger("ret") == 200) {
+//                                    activity.runOnUiThread { Snackbar.make(fab, "上传成功", Snackbar.LENGTH_LONG).show() }
+//                                } else {
+//                                    activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n" + jsonObject.getString("msg")).positiveText(android.R.string.ok).show() }
+//                                }
+//                            } catch (throwable: Throwable) {
+//                                activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("上传出现错误：\n请确定您已经正确的登陆").positiveText(android.R.string.ok).show() }
+//                            }
+//                        }
+//                    })
+//                }
+//                .show()
+//    }
 
     /**
      *
@@ -705,38 +705,38 @@ class ActivityDetail : ActivityBase() {
                 .show()
     }
 
-    private fun onItemClickRemoteRandom() {
-        val cookie = AgentWebConfig.getCookiesByUrl(AppEnvConstants.URL_APPENV_SERVER)
-        if (cookie.isNullOrEmpty()) {
-            MaterialDialog.Builder(activity).title(R.string.tip).content("没有检测到您登陆").positiveText(android.R.string.ok).show()
-            return
-        }
-
-        val materialDialog = MaterialDialog.Builder(activity).title(R.string.tip).content("正在获取数据……").progress(true, 0).cancelable(false).show()
-        OkHttpClient().newCall(Request.Builder().url(AppEnvConstants.URL_APPENV_RANDOM_PACKAGE).header("Cookie", cookie).build()).enqueue(object : Callback {
-            override fun onFailure(request: Request, e: IOException) {
-                materialDialog.dismiss()
-                activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n" + Log.getStackTraceString(e)).positiveText(android.R.string.ok).show() }
-            }
-
-            override fun onResponse(response: Response) {
-                materialDialog.dismiss()
-                try {
-                    val serverResult = response.body().string()
-//                    XLog.d(serverResult)
-                    val jsonObject = JSON.parseObject(serverResult)
-                    if (jsonObject.getInteger("ret") == 200) {
-                        activity.runOnUiThread { jsonObjectToUi(jsonObject.getJSONObject("data")) }
-                        activity.runOnUiThread { Snackbar.make(fab, "远程随机成功(扣除2次使用点数)", Snackbar.LENGTH_LONG).show() }
-                    } else {
-                        activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n" + jsonObject.getString("msg")).positiveText(android.R.string.ok).show() }
-                    }
-                } catch (throwable: Throwable) {
-                    activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n请确定您已经正确的登陆").positiveText(android.R.string.ok).show() }
-                }
-            }
-        })
-    }
+//    private fun onItemClickRemoteRandom() {
+//        val cookie = AgentWebConfig.getCookiesByUrl(AppEnvConstants.URL_APPENV_SERVER)
+//        if (cookie.isNullOrEmpty()) {
+//            MaterialDialog.Builder(activity).title(R.string.tip).content("没有检测到您登陆").positiveText(android.R.string.ok).show()
+//            return
+//        }
+//
+//        val materialDialog = MaterialDialog.Builder(activity).title(R.string.tip).content("正在获取数据……").progress(true, 0).cancelable(false).show()
+//        OkHttpClient().newCall(Request.Builder().url(AppEnvConstants.URL_APPENV_RANDOM_PACKAGE).header("Cookie", cookie).build()).enqueue(object : Callback {
+//            override fun onFailure(request: Request, e: IOException) {
+//                materialDialog.dismiss()
+//                activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n" + Log.getStackTraceString(e)).positiveText(android.R.string.ok).show() }
+//            }
+//
+//            override fun onResponse(response: Response) {
+//                materialDialog.dismiss()
+//                try {
+//                    val serverResult = response.body().string()
+////                    XLog.d(serverResult)
+//                    val jsonObject = JSON.parseObject(serverResult)
+//                    if (jsonObject.getInteger("ret") == 200) {
+//                        activity.runOnUiThread { jsonObjectToUi(jsonObject.getJSONObject("data")) }
+//                        activity.runOnUiThread { Snackbar.make(fab, "远程随机成功(扣除2次使用点数)", Snackbar.LENGTH_LONG).show() }
+//                    } else {
+//                        activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n" + jsonObject.getString("msg")).positiveText(android.R.string.ok).show() }
+//                    }
+//                } catch (throwable: Throwable) {
+//                    activity.runOnUiThread { MaterialDialog.Builder(activity).title(R.string.tip).content("远程随机出现错误：\n请确定您已经正确的登陆").positiveText(android.R.string.ok).show() }
+//                }
+//            }
+//        })
+//    }
 
     private fun JSONObject.put(key: String, value: String, boolean: Boolean) {
         if (value.isEmpty() && boolean)
