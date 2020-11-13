@@ -39,8 +39,8 @@ android {
 
     applicationVariants.all { variant ->
         def apkDir = new File("${project.rootDir}/${project.name}")
-        variant.getPackageApplicationProvider().get().outputDirectory = apkDir
         variant.outputs.all { output ->
+            variant.getPackageApplication().outputDirectory = apkDir
             outputFileName = "${project.name}.apk"
         }
     }
