@@ -13,8 +13,8 @@ apply plugin: 'kotlin-android-extensions'
 
 static def getGitVersion() { return 'git rev-parse --short HEAD'.execute().text.trim() }
 
-def Properties localProperties = new Properties()
-localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
+//def Properties localProperties = new Properties()
+//localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     compileSdkVersion 28
