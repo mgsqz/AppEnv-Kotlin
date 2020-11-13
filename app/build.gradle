@@ -61,6 +61,17 @@ android {
 //    channelFile = new File("${project.getProjectDir()}/channel.txt")
 //}
 
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '28.0.0'
+            }
+        }
+    }
+}
+
 dependencies {
     compileOnly fileTree(include: ['*.jar'], dir: 'libs')
 //    implementation files('libs/umeng-analytics-7.4.0.jar')
