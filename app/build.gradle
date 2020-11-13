@@ -35,18 +35,18 @@ android {
             keyAlias "Test"
             keyPassword "123321"
         }
-
     }
 
     applicationVariants.all { variant ->
-    def apkDir = new File("${project.rootDir}/${project.name}")
-    if ("${rootProject.ext.customAppDir}" == "${true}") {
-        variant.getPackageApplicationProvider().get().outputDirectory = apkDir
+        def apkDir = new File("${project.rootDir}/${project.name}")
+        if ("${rootProject.ext.customAppDir}" == "${true}") {
+            variant.getPackageApplicationProvider().get().outputDirectory = apkDir
+        }
+        variant.outputs.all { output ->
+            outputFileName = "${project.name}.apk"
+        }
     }
-    variant.outputs.all { output ->
-        outputFileName = "${project.name}.apk"
-    }
-
+    
     buildTypes {
         debug {
             signingConfig signingConfigs.release
