@@ -295,6 +295,8 @@ class ActivityDetail : ActivityBase() {
 
         oieLanguage.rightEditText = beanHookInfo?.language
         oieDisplayDpi.rightEditText = beanHookInfo?.displayDpi
+        oieFirstInstallTime.rightEditText = beanHookInfo?.firstInstallTime
+        oieLastUpdateTime.rightEditText = beanHookInfo?.lastUpdateTime
     }
 
     private fun uiToJsonObject(): JSONObject {
@@ -322,6 +324,8 @@ class ActivityDetail : ActivityBase() {
 
         beanHookInfo.language = oieLanguage.rightEditText.toString()
         beanHookInfo.displayDpi = oieDisplayDpi.rightEditText.toString()
+        beanHookInfo.firstInstallTime = oieFirstInstallTime.rightEditText.toString()
+        beanHookInfo.lastUpdateTime = oieLastUpdateTime.rightEditText.toString()
 
         return beanHookInfo.toJSON()
     }
@@ -402,7 +406,39 @@ class ActivityDetail : ActivityBase() {
                 .createDialog()
                 .show()
     }
-
+    
+    /**
+     *
+     */
+    @Event(R.id.oieFirstInstallTime)
+    private fun onItemClickFirstInstallTime(view: View) {
+        val menuPop = PopupMenu(activity, view)
+        menuPop.menu.add(R.string.random)
+        BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .expandOnStart(true)
+                .setMenu(menuPop.menu)
+                .setItemClickListener { oieFirstInstallTime.rightEditText = random.appTime() }
+                .createDialog()
+                .show()
+    }
+    
+    /**
+     *
+     */
+    @Event(R.id.oieLastUpdateTime)
+    private fun onItemClickLastUpdateTime(view: View) {
+        val menuPop = PopupMenu(activity, view)
+        menuPop.menu.add(R.string.random)
+        BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .expandOnStart(true)
+                .setMenu(menuPop.menu)
+                .setItemClickListener { oieLastUpdateTime.rightEditText = random.appTime() }
+                .createDialog()
+                .show()
+    }
+    
     /**
      *
      */
