@@ -9,6 +9,7 @@
 package com.sollyu.android.appenv.commons
 
 import android.annotation.SuppressLint
+import android.content.pm.PackageInfo
 import android.support.v7.app.AppCompatDelegate
 import android.util.Log
 //import com.elvishew.xlog.LogConfiguration
