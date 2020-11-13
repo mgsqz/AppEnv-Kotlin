@@ -51,6 +51,17 @@
             style="@style/OptionItem"
             app:leftText="@string/detail_build_version_name" />
 
+        <!--App Time 系列-->
+        <com.sollyu.android.option.item.OptionItemEdit
+            android:id="@+id/oieFirstInstallTime"
+            style="@style/OptionItem"
+            android:layout_marginTop="20dp"
+            app:leftText="App First Install Time" />
+        <com.sollyu.android.option.item.OptionItemEdit
+            android:id="@+id/oieLastUpdateTime"
+            style="@style/OptionItem"
+            app:leftText="App Last Update Time" />
+      
         <!--Android Id-->
         <com.sollyu.android.option.item.OptionItemEdit
             android:id="@+id/oieAndroidId"
