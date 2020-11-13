@@ -25,11 +25,16 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: ./gradlew build && find . -name "*.apk"
-        
-- name: Download a Build Artifact
-  uses: actions/download-artifact@v2.0.5
-  with:
+
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v2.0.5
+        with:
+            name: app.apk
+            path: app/app.apk
+
+
+
     # Artifact name
-    name: app.apk
+
     # Destination path
-    path: app/app.apk
+
