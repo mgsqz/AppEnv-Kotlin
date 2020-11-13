@@ -55,11 +55,11 @@ android {
 
 // ./gradlew clean assembleReleaseChannels
 // ./gradlew clean assembleReleaseChannels -PchannelList=official,github
-//walle {
-//    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
-//    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
-//    channelFile = new File("${project.getProjectDir()}/channel.txt")
-//}
+walle {
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels");
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk';
+    channelFile = new File("${project.getProjectDir()}/channel.txt")
+}
 
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
