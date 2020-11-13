@@ -69,6 +69,12 @@ class BeanHookInfo {
     @JSONField(name = "android.content.res.display.dpi")
     var displayDpi:String? = null
 
+    @JSONField(name = "android.content.pm.firstInstallTime")
+    var firstInstallTime: String? = null
+    
+    @JSONField(name = "android.content.pm.lastUpdateTime")
+    var lastUpdateTime: String? = null
+    
     @JSONField(serialize = false)
     override fun toString(): String {
         return JSON.toJSONString(this)
