@@ -134,6 +134,13 @@ class Random {
     fun androidId(): String {
         return RandomStringGenerator.Builder().withinRange('0'.toInt(), 'z'.toInt()).filteredBy(CharacterPredicates.LETTERS, CharacterPredicates.DIGITS).build().generate(RandomUtils.nextInt(10, 13))
     }
+    
+    /**
+     *
+     */
+    fun appTime(): String {
+        return "12345678900000"
+    }
 
     /**
      *
@@ -211,6 +218,8 @@ class Random {
         randomJsonObject.put("android.os.Build.ro.serialno", this.buildSerial())
         randomJsonObject.put("android.os.Build.VERSION.RELEASE", this.buildVersion())
 
+        randomJsonObject.put("android.content.pm.firstInstallTime",this.appTime())
+        randomJsonObject.put("android.content.pm.lastUpdateTime",this.appTime())
         randomJsonObject.put("android.os.SystemProperties.android_id", this.androidId())
 
         randomJsonObject.put("android.telephony.TelephonyManager.getLine1Number", this.simLine1Number())
