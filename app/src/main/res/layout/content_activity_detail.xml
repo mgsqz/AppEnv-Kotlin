@@ -61,6 +61,12 @@
             android:id="@+id/oieLastUpdateTime"
             style="@style/OptionItem"
             app:leftText="App Last Update Time" />
+
+        <!--App UA 系列-->
+        <com.sollyu.android.option.item.OptionItemEdit
+            android:id="@+id/oieUA"
+            style="@style/OptionItem"
+            app:leftText="App UA" />
       
         <!--Android Id-->
         <com.sollyu.android.option.item.OptionItemEdit

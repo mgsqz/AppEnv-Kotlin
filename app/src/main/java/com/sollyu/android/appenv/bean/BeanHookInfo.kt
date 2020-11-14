@@ -75,6 +75,9 @@ class BeanHookInfo {
     @JSONField(name = "android.content.pm.lastUpdateTime")
     var lastUpdateTime: String? = null
     
+    @JSONField(name = "android.web.head.user.agent")
+    var ua: String? = null
+
     @JSONField(serialize = false)
     override fun toString(): String {
         return JSON.toJSONString(this)

@@ -145,6 +145,13 @@ class Random {
     /**
      *
      */
+    fun genUA(): String {
+        return "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Mobile Safari/537.36"
+    }
+
+    /**
+     *
+     */
     fun simLine1Number(): String {
         val telFirst = arrayOf("134", "135", "136", "137", "138", "139", "150", "151", "152", "157", "158", "159", "130", "131", "132", "155", "156", "133", "153")
         var line1Number = ""
@@ -220,6 +227,7 @@ class Random {
 
         randomJsonObject.put("android.content.pm.firstInstallTime",this.appTime())
         randomJsonObject.put("android.content.pm.lastUpdateTime",this.appTime())
+        randomJsonObject.put("android.web.head.user.agent",this.genUA())
         randomJsonObject.put("android.os.SystemProperties.android_id", this.androidId())
 
         randomJsonObject.put("android.telephony.TelephonyManager.getLine1Number", this.simLine1Number())

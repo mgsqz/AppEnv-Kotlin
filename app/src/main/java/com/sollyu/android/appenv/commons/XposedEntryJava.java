@@ -21,6 +21,8 @@ import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 //import com.elvishew.xlog.XLog;
 import com.sollyu.android.appenv.BuildConfig;
@@ -273,6 +275,28 @@ public class XposedEntryJava implements IXposedHookLoadPackage {
                         }
                     });
         }
+
+        if (xposedPackageJson.has("android.web.head.user.agent") && !xposedPackageJson.optString("android.web.head.user.agent").isEmpty()) {
+            XposedBridgeHookAllMethods(System.class, "getProperty", new XC_MethodHook() {
+                /* access modifiers changed from: protected */
+                public void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
+                    if (methodHookParam.args[0].toString().equalsIgnoreCase("http.agent")) {
+                        Log.d("XposedEntry", "afterHookedMethod: ==== System BEFORE ====" + methodHookParam.getResult());
+                        methodHookParam.setResult(xposedPackageJson.optString("android.web.head.user.agent"));
+                        Log.d("XposedEntry", "afterHookedMethod: ==== System AFTER  ====" + methodHookParam.getResult());
+                    }
+                }
+            });
+            if (Build.VERSION.SDK_INT >= 17) {
+                XposedBridgeHookAllMethods(WebSettings.class, "getDefaultUserAgent", new MethodHookValue(xposedPackageJson.optString("android.web.head.user.agent")));
+            }
+            XposedBridgeHookAllMethods(WebView.class, "getSettings", new XC_MethodHook() {
+                /* access modifiers changed from: protected */
+                public void afterHookedMethod(XC_MethodHook.MethodHookParam methodHookParam) {
+                    XposedBridgeHookAllMethods(((WebSettings) methodHookParam.getResult()).getClass(), "getUserAgentString", new MethodHookValue(xposedPackageJson.optString("android.web.head.user.agent")));
+                }
+            });
+        }
     }
 
     private void XposedBridgeHookAllMethods(Class<?> hookClass, String methodName, XC_MethodHook callback) {
@@ -374,7 +398,8 @@ public class XposedEntryJava implements IXposedHookLoadPackage {
                 "android.content.res.language",
                 "android.content.res.display.dpi",
                 "android.content.pm.firstInstallTime",
-                "android.content.pm.lastUpdateTime"
+                "android.content.pm.lastUpdateTime",
+                "android.web.head.user.agent"
         };
         for (String itemName : jsonKey) {
             try {

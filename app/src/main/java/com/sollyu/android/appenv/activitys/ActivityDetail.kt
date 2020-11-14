@@ -23,6 +23,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
 import android.widget.PopupMenu
 import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
@@ -122,7 +123,7 @@ class ActivityDetail : ActivityBase() {
 
     override fun onInitData() {
         super.onInitData()
-
+        WebView(this).settings.userAgentString="AA"
         this.jsonObjectToUi(SettingsXposed.Instance.get(appInfo.packageName))
     }
 
@@ -297,6 +298,7 @@ class ActivityDetail : ActivityBase() {
         oieDisplayDpi.rightEditText = beanHookInfo?.displayDpi
         oieFirstInstallTime.rightEditText = beanHookInfo?.firstInstallTime
         oieLastUpdateTime.rightEditText = beanHookInfo?.lastUpdateTime
+        oieUA.rightEditText = beanHookInfo?.ua
     }
 
     private fun uiToJsonObject(): JSONObject {
@@ -326,6 +328,7 @@ class ActivityDetail : ActivityBase() {
         beanHookInfo.displayDpi = oieDisplayDpi.rightEditText.toString()
         beanHookInfo.firstInstallTime = oieFirstInstallTime.rightEditText.toString()
         beanHookInfo.lastUpdateTime = oieLastUpdateTime.rightEditText.toString()
+        beanHookInfo.ua = oieUA.rightEditText.toString()
 
         return beanHookInfo.toJSON()
     }
@@ -438,7 +441,23 @@ class ActivityDetail : ActivityBase() {
                 .createDialog()
                 .show()
     }
-    
+
+    /**
+     *
+     */
+    @Event(R.id.oieUA)
+    private fun onItemClickUA(view: View) {
+        val menuPop = PopupMenu(activity, view)
+        menuPop.menu.add(R.string.random)
+        BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .expandOnStart(true)
+                .setMenu(menuPop.menu)
+                .setItemClickListener { oieFirstInstallTime.rightEditText = random.genUA() }
+                .createDialog()
+                .show()
+    }
+
     /**
      *
      */
