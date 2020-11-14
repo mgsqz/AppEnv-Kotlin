@@ -445,22 +445,6 @@ class ActivityDetail : ActivityBase() {
     /**
      *
      */
-    @Event(R.id.oieUA)
-    private fun onItemClickUA(view: View) {
-        val menuPop = PopupMenu(activity, view)
-        menuPop.menu.add(R.string.random)
-        BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
-                .setMode(BottomSheetBuilder.MODE_LIST)
-                .expandOnStart(true)
-                .setMenu(menuPop.menu)
-                .setItemClickListener { oieFirstInstallTime.rightEditText = random.genUA() }
-                .createDialog()
-                .show()
-    }
-
-    /**
-     *
-     */
     @Event(R.id.oieAndroidId)
     private fun onItemClickAndroidId(view: View) {
         val popupMenu = PopupMenu(activity, view)
@@ -600,6 +584,19 @@ class ActivityDetail : ActivityBase() {
                 .expandOnStart(true)
                 .setMenu(popupMenu.menu)
                 .setItemClickListener { oieLanguage.rightEditText = Random.LANGUAGES.get(it.title.toString()).code }
+                .createDialog()
+                .show()
+    }
+    
+    @Event(R.id.oieUA)
+    private fun onItemClickUA(view: View) {
+        val popupMenu = PopupMenu(activity, view)
+        popupMenu.menu.add(R.string.random)
+        BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
+                .setMode(BottomSheetBuilder.MODE_LIST)
+                .expandOnStart(true)
+                .setMenu(menuPop.menu)
+                .setItemClickListener { oieUA.rightEditText = random.genUA() }
                 .createDialog()
                 .show()
     }
