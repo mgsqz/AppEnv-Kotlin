@@ -57,16 +57,13 @@
             style="@style/OptionItem"
             android:layout_marginTop="20dp"
             app:leftText="App First Install Time" />
+
+        <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+
         <com.sollyu.android.option.item.OptionItemEdit
             android:id="@+id/oieLastUpdateTime"
             style="@style/OptionItem"
             app:leftText="App Last Update Time" />
-
-        <!--App UA 系列-->
-        <com.sollyu.android.option.item.OptionItemEdit
-            android:id="@+id/oieUA"
-            style="@style/OptionItem"
-            app:leftText="App UA" />
       
         <!--Android Id-->
         <com.sollyu.android.option.item.OptionItemEdit
@@ -173,6 +170,14 @@
             android:id="@+id/oieDisplayDpi"
             style="@style/OptionItem"
             app:leftText="@string/detail_display_dip" />
+
+        <com.sollyu.android.option.item.OptionItemLine style="@style/OptionItem.Line" />
+
+        <!--App UA 系列-->
+        <com.sollyu.android.option.item.OptionItemEdit
+            android:id="@+id/oieUA"
+            style="@style/OptionItem"
+            app:leftText="App UA" />
 
     </LinearLayout>
 </ScrollView>
