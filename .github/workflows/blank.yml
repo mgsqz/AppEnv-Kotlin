@@ -29,7 +29,7 @@ jobs:
       - name: Prepare artifact
         run: |
           mkdir -p ./artifact/package
-          cp -rf $(find . -name "*.apk" -type f) ./artifact/package/
+          cp -rf $(find . -name -type f -name "*.ipk") ./artifact/package/
 
       - name: Deliver package
         uses: actions/upload-artifact@v2
@@ -40,7 +40,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v2.0.5
         with:
-            name: apk_file
+            name: apk_package
             path: ./artifact/package/
 
 
