@@ -595,7 +595,7 @@ class ActivityDetail : ActivityBase() {
         BottomSheetBuilder(activity, R.style.AppTheme_BottomSheetDialog)
                 .setMode(BottomSheetBuilder.MODE_LIST)
                 .expandOnStart(true)
-                .setMenu(menuPop.menu)
+                .setMenu(popupMenu.menu)
                 .setItemClickListener { oieUA.rightEditText = random.genUA() }
                 .createDialog()
                 .show()
